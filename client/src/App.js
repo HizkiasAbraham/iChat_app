@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import teal from '@material-ui/core/colors/teal';
 import amber from '@material-ui/core/colors/amber'
 import Router from './routes/router';
+import Header from './components/guest/common/header';
 
 const theme = createMuiTheme({
   palette: {
