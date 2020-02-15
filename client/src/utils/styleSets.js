@@ -17,5 +17,8 @@ export const guestFormStyles = theme => {
         submit: {
             margin: theme.spacing(3, 0, 2),
         },
+        noTransform: {
+            textTransform: 'none'
+        }
     }
 }
