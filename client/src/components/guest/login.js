@@ -30,7 +30,7 @@ export default function LogIn(props) {
     return (
         <React.Fragment>
             <Header {...props} />
-            <Container component="main" maxWidth="xs">
+            <Container className={classes.body} component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>

@@ -1,14 +1,15 @@
 import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
-import teal from '@material-ui/core/colors/teal';
-import amber from '@material-ui/core/colors/amber'
+import indigo from '@material-ui/core/colors/indigo';
+import pink from '@material-ui/core/colors/pink';
+import Grid from '@material-ui/core/Grid';
 import Router from './routes/router';
 
 const theme = createMuiTheme({
   palette: {
-    primary: teal,
-    secondary: amber,
+    primary: indigo,
+    secondary: pink,
     tonalOffset: 0.2
   },
   typography: {
@@ -31,7 +32,23 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router />
+      <Grid container>
+        <Grid
+          xs={12}
+          md={2}
+          item
+        >
+        </Grid>
+
+        <Grid 
+          xs={12}
+          md={8}
+          item
+        >
+          <Router />
+        </Grid>
+
+      </Grid>
     </ThemeProvider>
   )
 }
