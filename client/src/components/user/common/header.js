@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ChatIcon from '@material-ui/icons/Chat';
 
+import { connect } from 'react-redux';
+
 import { goto } from '../../../routes/routeUtils';
 
 const useStyles = makeStyles(theme => ({
@@ -18,12 +20,29 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
     },
+    chatInfoBar: {
+        position: 'relative',
+        marginRight: `${window.innerHeight - (window.innerHeight/2.5)}px`,
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    },
     noTransform: {
         textTransform: 'none'
     }
 }));
 
-export default function Header(props) {
+const mapStateToProps = state => {
+    return {
+        currentChat: state.currentChat
+    }
+}
+
+function Header(props) {
+    const currentChat = props.currentChat;
 
     console.log('History ', props.history)
     const classes = useStyles();
@@ -44,8 +63,21 @@ export default function Header(props) {
                             </Typography>
                         </Button>
                     </Typography>
+                    {
+                        currentChat.isSelected &&
+                        <div className={classes.chatInfoBar}>
+                            <Typography variant="subtitle1">
+                                {`${currentChat.user.firstName} ${currentChat.user.lastName}`}
+                            </Typography>
+                            <Typography variant="subtitle2">
+                                online
+                            </Typography>
+                        </div>
+                    }
                 </Toolbar>
             </AppBar>
         </div>
     );
 }
+
+export default connect(mapStateToProps)(Header);

@@ -6,6 +6,9 @@ import pink from '@material-ui/core/colors/pink';
 import Grid from '@material-ui/core/Grid';
 import Router from './routes/router';
 
+import store from './state/store';
+import { Provider as StoreProvider } from 'react-redux';
+
 const theme = createMuiTheme({
   palette: {
     primary: indigo,
@@ -40,12 +43,14 @@ function App() {
         >
         </Grid>
 
-        <Grid 
+        <Grid
           xs={12}
           md={8}
           item
         >
-          <Router />
+          <StoreProvider store={store}>
+            <Router />
+          </StoreProvider>
         </Grid>
 
       </Grid>
