@@ -29,7 +29,7 @@ export default function LogIn(props) {
 
     return (
         <React.Fragment>
-            <Header {...props} />
+            {/* <Header {...props} /> */}
             <Container className={classes.body} component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>

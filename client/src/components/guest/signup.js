@@ -27,7 +27,7 @@ export default function Signup(props) {
 
     return (
         <React.Fragment>
-            <Header {...props} />
+            {/* <Header {...props} /> */}
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <div className={classes.paper}>
