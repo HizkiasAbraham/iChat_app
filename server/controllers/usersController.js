@@ -13,7 +13,20 @@ module.exports = {
             failureResponse(res, 422, errors.array());
             return;
         }
-        successJsonResponse(res, req.body);
+
+        try {
+            let salt = await bcrypt.genSalt(12);
+            let newUser = Object.assign({}, req.body);
+            newUser.password = await bcrypt.hash(newUser.password, salt);
+
+            let userCreated = await User.create(newUser);
+            let {password, ...rest} = userCreated._doc;
+
+            successJsonResponse(res, rest)
+
+        } catch (error) {
+            failureResponse(res, 500);
+        }
     },
 
     login: async (req, res) => {
