@@ -42,5 +42,14 @@ module.exports = {
                 .isLength({ min: 5 }).withMessage('Password must be atleast 5 characters long')
 
         ]
+    },
+
+    validateLogin: () => {
+        return [
+            body('email')
+                .exists().withMessage('Email or username is required'),
+            body('password')
+                .exists().withMessage('Password is required')
+        ]
     }
 }
