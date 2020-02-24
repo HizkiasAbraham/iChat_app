@@ -74,6 +74,16 @@ export default function Signup(props) {
                             margin="normal"
                             required
                             fullWidth
+                            id="username"
+                            label="Username"
+                            name="emusername"
+                            autoComplete="username"
+                        />
+                        <TextField
+                            variant="outlined"
+                            margin="normal"
+                            required
+                            fullWidth
                             name="password"
                             label="Password"
                             type="password"
