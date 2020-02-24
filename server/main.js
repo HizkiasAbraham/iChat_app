@@ -4,7 +4,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const cors = require('cors');
+const JwtStrategy = require('./authentication/jwtStrategy');
 const defaultRoutes = require('./routes/usersRoute');
 require('dotenv').config();
 
@@ -14,6 +16,9 @@ app.use(bodyParser.json());
 app.use(cors({}));
 // mount route
 app.use('/api/users', defaultRoutes);
+// use passport
+passport.use(JwtStrategy);
+app.use(passport.initialize());
 // connect to mongodb
 mongoose.connect(process.env.MONGODB_URL,
     { useNewUrlParser: true, useUnifiedTopology: true })
